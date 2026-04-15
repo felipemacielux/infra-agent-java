@@ -33,3 +33,7 @@ O projeto foi desenvolvido com foco em boas práticas de infraestrutura e contai
 
 ```bash
 docker build -t infra-agent .
+docker run \
+--name infra_agent \
+-v ~/infra_agent-logs:/app/logs \
+infra_agent
