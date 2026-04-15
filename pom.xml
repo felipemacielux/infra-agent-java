@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Versão do modelo do Maven -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Identificação do projeto -->
+    <groupId>com.example.agent</groupId>
+    <artifactId>infra-agent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>infra-agent</name>
+    <description>Infra Agent Java para checks de sistema</description>
+
+    <!-- Configuração do Java -->
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Não usamos dependências externas por enquanto -->
+    <dependencies>
+        <!-- vazio de propósito -->
+    </dependencies>
+
+    <!-- Build -->
+    <build>
+        <plugins>
+
+            <!-- Plugin responsável por gerar um JAR executável -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+
+                <configuration>
+                    <!-- Cria um JAR com todas as dependências -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+
+                    <!-- Define a classe MAIN -->
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.agent.InfraAgent</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+
+                <!-- Executa automaticamente no mvn package -->
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
